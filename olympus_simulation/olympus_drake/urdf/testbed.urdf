@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot name="testbed">
+
+  <!-- <link name="world" /> -->
+
+  <link name="testbed">
+    <visual>
+      <origin xyz="0 0 -0.5"/>
+      <geometry>
+        <cylinder length="1" radius="0.025"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="0.9451    0.6000    0.1765 1"/>
+      </material>
+    </visual>
+    <visual name="direction_indicator">
+      <origin xyz="0 0 -0.75"/>
+      <geometry>
+        <box size="0.15 0.03 0.045"/>
+      </geometry>
+      <material name="red">
+        <color rgba="0.7490    0.3020    0.3020 1"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 -0.5"/>
+      <geometry>
+        <cylinder length="1" radius="0.025"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="0.5"/>
+    </inertial>
+  </link>
+
+  <!-- <joint name="world_joint" type="continuous">
+    <origin xyz="0.0 0.0 1" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 0.0 1"/>
+    <parent link="world"/>
+    <child link="testbed"/>
+  </joint> -->
+
+</robot>

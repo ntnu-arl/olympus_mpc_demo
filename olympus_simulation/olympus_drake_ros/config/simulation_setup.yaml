@@ -1,0 +1,6 @@
+body_publisher_topic: "/qualisys/olympus/odom"
+leg_order:
+  FrontLeft:  1
+  FrontRight: 2
+  BackLeft:   3
+  BackRight:  4

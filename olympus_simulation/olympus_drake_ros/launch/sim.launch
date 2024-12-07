@@ -1,0 +1,5 @@
+<launch>
+    <param name="" textfile="$(find olympus_drake_ros)/config/simulation_setup.yaml" type="yaml"/>
+
+    <node name="sim_deployer" pkg="olympus_drake_ros" type="deploy_sim.sh" output="screen" />
+</launch>

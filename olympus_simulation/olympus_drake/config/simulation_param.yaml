@@ -1,0 +1,7 @@
+gravity: [0,0,0]                # To simulate free-floating conditions
+time_step: 5e-4                 # Simulation time-step, affects accuracy of dynamics
+sim_update_rate: 1e-2           # Update rate of the simulation quantities (states, visualization etc)
+realtime_rate: 1                # 0.5 - half real time speed, 2 - twice as fast.  Cannot speed the simulation if fully fast.
+publish_every_time_step: false  # true may compromise real time rate. (It updates the visualization at each 
+                                # time_step. Resource intesive taks. We do not need update every 
+                                # time step. Recommended: false)
