@@ -58,7 +58,7 @@ olympus_ros_interface::olympus_ros_interface(drake_ros_elements & drake_elements
   
     //index for each motor in each leg
     for (int j=1; j<num_DOF_leg+1 ;j++){
-      ms.id = num_DOF_leg*i +j ; 
+      ms.id = num_DOF_leg*(leg_number-1) +j ; 
 
       //Will never publish these values, as first reads before publishing. 
       ms.position = 0;

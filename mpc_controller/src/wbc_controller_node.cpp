@@ -331,20 +331,20 @@ class whole_body_controller {
 
   // ===== SUBSCRIBERS CALLBACKS ========
 
-  void body_current_pose_update(const geometry_msgs::PoseStampedConstPtr & pose){
-    const double & quat_w = pose->pose.orientation.w; // .orientation.w;
-    const double & quat_x = pose->pose.orientation.x;
-    const double & quat_y = pose->pose.orientation.y;
-    const double & quat_z = pose->pose.orientation.z;
+  void body_current_pose_update(const nav_msgs::OdometryConstPtr & odom){
+    // const double & quat_w = pose->pose.orientation.w; // .orientation.w;
+    // const double & quat_x = pose->pose.orientation.x;
+    // const double & quat_y = pose->pose.orientation.y;
+    // const double & quat_z = pose->pose.orientation.z;
 
 
 
     
 
-    // const double & quat_w = odom->pose.pose.orientation.w;
-    // const double & quat_x = odom->pose.pose.orientation.x;
-    // const double & quat_y = odom->pose.pose.orientation.y;
-    // const double & quat_z = odom->pose.pose.orientation.z;
+    const double & quat_w = odom->pose.pose.orientation.w;
+    const double & quat_x = odom->pose.pose.orientation.x;
+    const double & quat_y = odom->pose.pose.orientation.y;
+    const double & quat_z = odom->pose.pose.orientation.z;
 
     // // Cancel angular velocity feedback for experiments
     const double  w_x = 0;//odom->twist.twist.angular.x;
@@ -354,32 +354,33 @@ class whole_body_controller {
     quat_current.w()  = quat_w;
     
     // Switch reading
-    // switch (controller_config){
-    //   case base_joint::weld : 
-    //     quat_current.setIdentity();
-    //     break;
-    //   case base_joint::revolute_x : // Roll  axis is the z axis of the mo-cap
-        tf2::Quaternion quat_(quat_x,quat_y,quat_z,quat_w);
+    switch (controller_config){
+      case base_joint::weld : 
+        quat_current.setIdentity();
+        break;
+      case base_joint::revolute_x : // Roll  axis is the z axis of the mo-cap
+        {tf2::Quaternion quat_(quat_x,quat_y,quat_z,quat_w);
         double ang2 = get_angle(quat_);
         Eigen::Vector3d aa(1,0,0);
         Eigen::AngleAxisd qq(ang2,aa);
         Eigen::Quaterniond eigen_quat(qq);
         // auto quat_vec = eigen_quat.vec();
         quat_current.w() = eigen_quat.w();
-
+        
 
 
         quat_current.vec() << eigen_quat.vec()[0], eigen_quat.vec()[1],eigen_quat.vec()[2];
         twist_current      <<    w_z,   w_x,   w_y;
-    //     break;
-    //   case base_joint::revolute_y : // Pitch axis is the z axis of the mo-cap
-    //     quat_current.vec() << quat_y,quat_z,quat_x;
-    //     twist_current      <<    w_y,   w_z,   w_x;
-    //     break;
-    //   default: //floating & revolute z: // Either from drake or yaw axis == z axis of mo-cap
-    //     quat_current.vec() << quat_x,quat_y,quat_z;
-    //     twist_current      <<    w_x,   w_y,   w_z;
-    // }
+        }
+        break;
+      case base_joint::revolute_y : // Pitch axis is the z axis of the mo-cap
+        // quat_current.vec() << quat_y,quat_z,quat_x;
+        // twist_current      <<    w_y,   w_z,   w_x;
+        // break;
+      default: //floating & revolute z: // Either from drake or yaw axis == z axis of mo-cap
+        quat_current.vec() << quat_x,quat_y,quat_z;
+        twist_current      <<    w_x,   w_y,   w_z;
+    }
 
     
 
@@ -777,6 +778,7 @@ class whole_body_controller {
     //   new_mode = controller_mode::stabilizing ; 
     // }
     double ang_distance = quat_desired.angularDistance(quat_current); 
+    ROS_INFO_STREAM("[wbc]: Current angular error is: " << ang_distance*180/M_PI);
     if (stabilization_mode && current_mode ==  controller_mode::stabilizing && (ang_distance < ANGULAR_STABILIZATION_THRESH_EXIT) ){
       new_mode = controller_mode::stabilizing ;
     }
