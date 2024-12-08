@@ -24,15 +24,15 @@ leg_order: [1,3,0,2] #[FR,RR,FL,RR] id of the corresponding leg
 #SO: ShankOuter
 
 body_desired_pose_topic: "olympus/desired_angle"
-body_current_pose_topic: "/qualisys/olympus/pose"
-controller_mode : 3 #choose from [0: weld, 1: revolute_x, 2: revolute_y, 3: revolute_z, 4: floating]
+body_current_pose_topic: "/qualisys/olympus/odom"
+controller_mode : 1 #choose from [0: weld, 1: revolute_x, 2: revolute_y, 3: revolute_z, 4: floating]
 
 ### =========== ###
 # Control Options #
 ### =========== ###
 
-stabilization_mode: false
-manoeuvre_target_torque: [0,0,-2]
+stabilization_mode: true
+manoeuvre_target_torque: [0,0,-1]
 
 #initial testing Roll
 # contracting_param:          [0.75, 0.75, 0.75, 0.75]

@@ -2,7 +2,7 @@ robot_name: "olympus"
 
 #============= GENERAL
 
-base_joint_type: 3 #choose from [0: weld, 1: revolute_x, 2: revolute_y, 3: revolute_z, 4: floating]
+base_joint_type: 1 #choose from [0: weld, 1: revolute_x, 2: revolute_y, 3: revolute_z, 4: floating]
 
 testbed_params:
   # Horizontal Distance of the attachement point for each configuration:

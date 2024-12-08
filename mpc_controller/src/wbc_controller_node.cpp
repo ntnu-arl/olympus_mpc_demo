@@ -359,19 +359,41 @@ class whole_body_controller {
         quat_current.setIdentity();
         break;
       case base_joint::revolute_x : // Roll  axis is the z axis of the mo-cap
-        {tf2::Quaternion quat_(quat_x,quat_y,quat_z,quat_w);
-        double ang2 = get_angle(quat_);
-        Eigen::Vector3d aa(1,0,0);
-        Eigen::AngleAxisd qq(ang2,aa);
-        Eigen::Quaterniond eigen_quat(qq);
-        // auto quat_vec = eigen_quat.vec();
-        quat_current.w() = eigen_quat.w();
+        // {tf2::Quaternion quat_(quat_x,quat_y,quat_z,quat_w);
+        // double ang2 = get_angle(quat_);
+        // Eigen::Vector3d aa(1,0,0);
+        // Eigen::AngleAxisd qq(ang2,aa);
+        // Eigen::Quaterniond eigen_quat(qq);
+        // // auto quat_vec = eigen_quat.vec();
+        // quat_current.w() = eigen_quat.w();
+
+        {
+        Eigen::Vector3d     axis_off(0,1,0);
+        Eigen::AngleAxisd   ang_ax_off(-M_PI_2,axis_off);
+        Eigen::Quaterniond  quat_off(ang_ax_off);
+
+        Eigen::Quaterniond  quat_read(quat_w,quat_x,quat_y,quat_z);
+        
+        Eigen::Quaterniond  quat_act = (quat_off.inverse())*quat_read;
+
+        // quat_current.vec() << quat_act.x(),quat_act.y(),quat_act.z();
+        // quat_current.w() = quat_act.w();
+
+        quat_current = quat_act;
+        ROS_INFO_STREAM("[wbc]: ["<< quat_act.w() <<"," << quat_act.x() <<"," <<quat_act.y() <<"," <<quat_act.z() <<"]" );
+
+
+
+
+        }        
         
 
 
-        quat_current.vec() << eigen_quat.vec()[0], eigen_quat.vec()[1],eigen_quat.vec()[2];
-        twist_current      <<    w_z,   w_x,   w_y;
-        }
+        // quat_current.vec() << eigen_quat.vec()[0], eigen_quat.vec()[1],eigen_quat.vec()[2];
+        // twist_current      <<    w_z,   w_x,   w_y;
+        // }
+
+        twist_current      <<    w_x,   w_y,   w_z;
         break;
       case base_joint::revolute_y : // Pitch axis is the z axis of the mo-cap
         // quat_current.vec() << quat_y,quat_z,quat_x;
@@ -779,6 +801,11 @@ class whole_body_controller {
     // }
     double ang_distance = quat_desired.angularDistance(quat_current); 
     ROS_INFO_STREAM("[wbc]: Current angular error is: " << ang_distance*180/M_PI);
+
+    ROS_INFO_STREAM("[wbc]: config" << controller_config);
+    ROS_INFO_STREAM("[wbc]:quat_desired =  ["<< quat_desired.w() <<"," << quat_desired.x() <<"," <<quat_desired.y() <<"," <<quat_desired.z() <<"]" );
+    ROS_INFO_STREAM("[wbc]:quat_current =  ["<< quat_current.w() <<"," << quat_current.x() <<"," <<quat_current.y() <<"," <<quat_current.z() <<"]" );
+
     if (stabilization_mode && current_mode ==  controller_mode::stabilizing && (ang_distance < ANGULAR_STABILIZATION_THRESH_EXIT) ){
       new_mode = controller_mode::stabilizing ;
     }
