@@ -1,0 +1,10 @@
+<launch>
+
+
+  <node name="rqt" pkg="rqt_gui" type="rqt_gui" 
+  args=" --perspective-file $(find mpc_controller)/config/wbc_logging.perspective"/>
+
+  <node pkg="mpc_controller" type="degree_pub.py" name="degree_pub" output="screen" />
+
+
+</launch>

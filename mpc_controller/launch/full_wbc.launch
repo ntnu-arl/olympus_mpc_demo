@@ -1,0 +1,24 @@
+<launch>
+
+  <include file="$(find mpc_controller)/launch/wbc.launch" />
+
+  <param
+  name="robot_description"
+  textfile="$(find olympus_description)/urdf/olympus_simple_collision.urdf" />
+
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz" 
+    args="-d $(find olympus_intergration_helpers)/config/trajectory.rviz" />
+  <node
+    name="tf_world_Body_link"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 olympus Body 40" />
+
+</launch>

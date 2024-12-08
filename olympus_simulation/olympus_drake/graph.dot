@@ -340,7 +340,7 @@ channel=DRAKE_VIEWER_DRAW
 </TR>
 </TABLE>
 >];
-s439:e -> drakelcminterface93824993538864in [style="dashed", color="webpurple"];
+s439:e -> drakelcminterface94120826830912in [style="dashed", color="webpurple"];
 s443 [shape=none, border=0, label=<
 <TABLE BORDER="0" CELLSPACING="0">
 <TR><TD BORDER="1" COLSPAN="2">
@@ -354,7 +354,7 @@ channel=DRAKE_VIEWER_DRAW_PROXIMITY
 </TR>
 </TABLE>
 >];
-s443:e -> drakelcminterface93824993538864in [style="dashed", color="webpurple"];
+s443:e -> drakelcminterface94120826830912in [style="dashed", color="webpurple"];
 s447 [shape=none, border=0, label=<
 <TABLE BORDER="0" CELLSPACING="0">
 <TR><TD BORDER="1" COLSPAN="2">
@@ -381,7 +381,7 @@ type=lcmt_contact_results_for_viz
 </TR>
 </TABLE>
 >];
-s448:e -> drakelcminterface93824993538864in [style="dashed", color="webpurple"];
+s448:e -> drakelcminterface94120826830912in [style="dashed", color="webpurple"];
 s449 [shape=none, border=0, label=<
 <TABLE BORDER="0" CELLSPACING="0">
 <TR><TD BORDER="1" COLSPAN="2">
@@ -457,20 +457,20 @@ name=inertia_visualizer
 </TR>
 </TABLE>
 >];
-s1:y3:e -> s436:u0:w
 s2:y0:e -> s1:u0:w
 s435:y0:e -> s1:u5:w
 s1:y0:e -> s2:u0:w
 s453:y0:e -> s2:u2:w
+s437:y0:e -> s393:u0:w
 s437:y1:e -> s396:u0:w
 s396:y0:e -> s397:u0:w
 s399:y0:e -> s400:u0:w
-s437:y2:e -> s399:u0:w
 s1:y24:e -> s452:u0:w
 s2:y0:e -> s452:u1:w
+s1:y3:e -> s436:u0:w
 s447:y0:e -> s448:u0:w
 s393:y0:e -> s394:u0:w
-s437:y0:e -> s393:u0:w
+s437:y2:e -> s399:u0:w
 s402:y0:e -> s403:u0:w
 s437:y3:e -> s402:u0:w
 s394:y0:e -> s435:u0:w

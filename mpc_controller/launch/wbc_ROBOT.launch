@@ -1,0 +1,23 @@
+<launch>
+  <arg name="ACADOS_INSTALL_DIR" default="$(optenv HOME)/acados" />
+
+  <env name="LD_LIBRARY_PATH" value="$(arg ACADOS_INSTALL_DIR)/lib:$(optenv LD_LIBRARY_PATH)" />
+  <env name="ACADOS_SOURCE_DIR" value="$(arg ACADOS_INSTALL_DIR)" />
+
+
+  <node pkg="mpc_controller" type="wbc_controller_node" name="mpc_controller" output="screen">
+    <param name="" textfile="$(find mpc_controller)/config/controller_params.yaml" type="yaml"/>
+  </node>
+
+  <node pkg="mpc_controller" type="degree_pub.py" name="degree_pub" output="screen" />
+
+  <!-- Logging and state-estimation -->
+
+  <node name="rqt" pkg="rqt_gui" type="rqt_gui" 
+  args=" --perspective-file $(find mpc_controller)/config/wbc_logging.perspective"/>
+
+  <!-- <node pkg="olympus_observer" type="olympusObserver" name="olympus_observer" output="screen">
+    <param name="robot" textfile="$(find olympus_observer)/configs/real_offsets.yaml" type="yaml"/>
+  </node> -->
+
+</launch>
