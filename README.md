@@ -1,6 +1,6 @@
 # Modeling and In-flight Torso Attitude Stabilization of a Jumping Quadruped
 
-![Teaser of the proposed controller.](https://github.com/ntnu-arl/olympus_mpc_demo/blob/master/media/teaser.gif)
+![Teaser of the proposed controller.](https://github.com/ntnu-arl/olympus_mpc_demo/tree/main/media/teaser.gif)
 
 This repository contains the code for the paper ["Modeling and In-flight Torso Attitude Stabilization of a Jumping Quadruped"](https://arxiv.org/abs/2409.14567).
 
