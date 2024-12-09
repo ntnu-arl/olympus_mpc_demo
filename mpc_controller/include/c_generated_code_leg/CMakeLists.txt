@@ -96,8 +96,8 @@ set(EXTERNAL_DIR)
 set(EXTERNAL_LIB)
 
 # set some search paths for preprocessor and linker
-set(ACADOS_INCLUDE_PATH /home/papaveneti/acados/include CACHE PATH "Define the path which contains the include directory for acados.")
-set(ACADOS_LIB_PATH /home/papaveneti/acados/lib CACHE PATH "Define the path which contains the lib directory for acados.")
+set(ACADOS_INCLUDE_PATH /home/$ENV{USER}/acados/include CACHE PATH "Define the path which contains the include directory for acados.")
+set(ACADOS_LIB_PATH /home/$ENV{USER}/acados/lib CACHE PATH "Define the path which contains the lib directory for acados.")
 
 # c-compiler flags for debugging
 set(CMAKE_C_FLAGS_DEBUG "-O0 -ggdb")

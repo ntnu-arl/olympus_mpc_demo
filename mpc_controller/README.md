@@ -6,7 +6,8 @@
 ``` bash
 $ ./install_prerequisites.sh  [installation_path]
 ```
-- If no installation path is provided, acados will be installed in `home/acados`. 
+- It is recommended to not alter the default installation path, which is `home/acados`. 
+- If an installation path is provided, the CMake and Make files in the `c_generated_code` folders must be changed accordingly.
 
 2. If an installation path is provided, update the `ACADOS_INSTALL_DIR` in the `launch/wbc.launch`.
 
