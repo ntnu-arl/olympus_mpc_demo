@@ -1,4 +1,0 @@
-uint8[] ids   # This field is limited to int 8 so that we dont exceed 255
-bool[] flags # e.g. for hardware enabling / disabling
----
-bool success   # indicate successful run of triggered service
