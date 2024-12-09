@@ -33,7 +33,8 @@ git clone git@github.com:ntnu-arl/olympus_mpc_demo.git
 In seperate terminals (after sourcing):
 
 ```shell
-roslaunch olympus_drake_ros sim.launch
-roslaunch mpc_controller wbc.launch
-rosrun mpc_controller reference_pub.py # set up script to set reference
+roslaunch olympus_drake_ros sim.launch    #run simulation
+roslaunch mpc_controller wbc.launch       #run attitude controller
+roslaunch mpc_controller plot.launch      #view important plots for the MPC
+rosrun    mpc_controller reference_pub.py #publish attitude reference
 ```

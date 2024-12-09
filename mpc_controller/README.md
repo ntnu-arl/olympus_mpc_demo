@@ -29,3 +29,9 @@ After sourcing the ws
 ```
 roslaunch mpc_controller wbc.launch
 ```
+
+## Run different scenarios:
+The simulated scenarios can be changed by tweaking the config file [controller_params.yaml](config/controller_params.yaml)
+
+- `controller_mode` changes the degree of freedom for the reorientation maneuver. It must be the same as the `base_joint_type` in  [olympus_param.yaml](../olympus_simulation/olympus_drake/config/olympus_param.yaml).
+- `stabilization_mode` If set to `true`, the attitude controller tracks reference orientations. Otherwise, it tracks the torque specified at `manoeuvre_target_torque`
