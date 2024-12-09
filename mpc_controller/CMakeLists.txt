@@ -14,10 +14,10 @@ find_package(catkin REQUIRED COMPONENTS
   olympus_ros_msgs
   std_msgs 
   geometry_msgs
+  nav_msgs
   message_generation
   tf
 )
-add_subdirectory(include/c_generated_code) #position control
 add_subdirectory(include/c_generated_code_SRBD) #SRBD MPC
 add_subdirectory(include/c_generated_code_leg) #torque tracking MPC
 
@@ -118,7 +118,7 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+ INCLUDE_DIRS include
 #  LIBRARIES mpc_controller
 #  CATKIN_DEPENDS olympus_kinematics roscpp
   CATKIN_DEPENDS message_runtime
@@ -149,10 +149,9 @@ include
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME}_node src/mpc_controller_node.cpp)
 add_executable(wbc_controller_node src/wbc_controller_node.cpp)
 
-
+#tests:
 add_executable(test_acados_SRBD src/test_node_SRBD.cpp)
 add_executable(test_acados_torque src/test_node_torque.cpp)
 
@@ -167,13 +166,6 @@ add_executable(test_acados_torque src/test_node_torque.cpp)
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(${PROJECT_NAME}_node
-  ${catkin_LIBRARIES}
-  acados_ocp_solver_fr_leg_pos
-)
-target_include_directories(${PROJECT_NAME}_node PRIVATE ${ACADOS_INCLUDE_DIRS} c_generated_code) 
-target_link_directories(${PROJECT_NAME}_node PRIVATE ${ACADOS_LIB_PATH}) #to link agains libss
-
 target_link_libraries(wbc_controller_node
   ${catkin_LIBRARIES}
   acados_ocp_solver_SRBD
@@ -183,7 +175,7 @@ target_include_directories(wbc_controller_node PRIVATE ${ACADOS_INCLUDE_DIRS} c_
 target_link_directories(wbc_controller_node PRIVATE ${ACADOS_LIB_PATH}) #to link agains libss
 
 
-
+#tests:
 target_include_directories(test_acados_SRBD PRIVATE ${ACADOS_INCLUDE_DIRS}  c_generated_code_SRBD) 
 target_link_libraries(test_acados_SRBD ${catkin_LIBRARIES}    acados_ocp_solver_SRBD )
 target_link_directories(test_acados_SRBD PRIVATE ${ACADOS_LIB_PATH}) 

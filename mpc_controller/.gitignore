@@ -1,13 +1,3 @@
-src/test*
-!src/test_node_SRBD.cpp
-!src/test_node_torque.cpp
 .vscode/
 config/olympus_param.yaml
 config/simulation_param.yaml
-test/test/test
-
-
-include/c_generated_code/
-include/c_generated_code_leg/
-include/c_generated_code_SRBD/
-config/testing_plan

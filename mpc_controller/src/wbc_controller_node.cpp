@@ -6,12 +6,9 @@
 #include "olympus_ros_msgs/SetpointArray.h"
 #include "sensor_msgs/JointState.h"
 #include "nav_msgs/Odometry.h"
-#include "geometry_msgs/PoseStamped.h"
 #include "std_msgs/Float32MultiArray.h"
 #include "mpc_controller/phase.h"
 #include "mpc_controller/mpc_status.h"
-#include <tf2/LinearMath/Quaternion.h>
-#include <tf2/LinearMath/Matrix3x3.h>
 
 #define corresponding_kinematic_configuration(leg_id) ( (i==0 || i==3)? 1: 2 ) 
 #define traj_stages 4
@@ -46,16 +43,16 @@ struct leg_controller_opt{
   int leg_id = 0; 
 };
 
-double get_angle(const tf2::Quaternion& orientation) {
-    tf2::Matrix3x3 m(orientation);
-    double roll, pitch, yaw;
-    m.getRPY(roll, pitch, yaw); // returns radians
+// double get_angle(const tf2::Quaternion& orientation) {
+//     tf2::Matrix3x3 m(orientation);
+//     double roll, pitch, yaw;
+//     m.getRPY(roll, pitch, yaw); // returns radians
 
-    // double unwrapped_yaw = atan2(sin(yaw - current_angle), cos(yaw - current_angle));
-    // current_angle = unwrapped_yaw;
+//     // double unwrapped_yaw = atan2(sin(yaw - current_angle), cos(yaw - current_angle));
+//     // current_angle = unwrapped_yaw;
 
-    return yaw ; 
-}
+//     return yaw ; 
+// }
 
 enum base_joint {weld, revolute_x, revolute_y, revolute_z, floating };
 

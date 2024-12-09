@@ -17,8 +17,10 @@ $ catkin build mpc_controller
 
 4. To check that acados runs as expected, after sourcing the ws run:
 ```
-roslaunch mpc_controller mpc.launch
+roslaunch mpc_controller test.launch
 ```
+
+The node should solve an MPC problem for one iteration and output the solution results.
 
 ## Run the whole body controller:
 

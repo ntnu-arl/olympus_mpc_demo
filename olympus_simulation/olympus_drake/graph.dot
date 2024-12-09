@@ -340,7 +340,7 @@ channel=DRAKE_VIEWER_DRAW
 </TR>
 </TABLE>
 >];
-s439:e -> drakelcminterface94120826830912in [style="dashed", color="webpurple"];
+s439:e -> drakelcminterface94182101708656in [style="dashed", color="webpurple"];
 s443 [shape=none, border=0, label=<
 <TABLE BORDER="0" CELLSPACING="0">
 <TR><TD BORDER="1" COLSPAN="2">
@@ -354,7 +354,7 @@ channel=DRAKE_VIEWER_DRAW_PROXIMITY
 </TR>
 </TABLE>
 >];
-s443:e -> drakelcminterface94120826830912in [style="dashed", color="webpurple"];
+s443:e -> drakelcminterface94182101708656in [style="dashed", color="webpurple"];
 s447 [shape=none, border=0, label=<
 <TABLE BORDER="0" CELLSPACING="0">
 <TR><TD BORDER="1" COLSPAN="2">
@@ -381,7 +381,7 @@ type=lcmt_contact_results_for_viz
 </TR>
 </TABLE>
 >];
-s448:e -> drakelcminterface94120826830912in [style="dashed", color="webpurple"];
+s448:e -> drakelcminterface94182101708656in [style="dashed", color="webpurple"];
 s449 [shape=none, border=0, label=<
 <TABLE BORDER="0" CELLSPACING="0">
 <TR><TD BORDER="1" COLSPAN="2">
