@@ -5,6 +5,7 @@ This package contains the drake simulation for olympus which is interfaced with 
 1. Decoupled drake simulation from ros interface for easier development
 2. ROS interface uses the API of the actual robot as of 30/6/24
 3. Lab experiments can be simulated as is. See [this](#simulating-lab-experiments-or-floating-conditions)
+4. Simulation documentation available [here](https://ntnu-arl.github.io/olympus_mpc_demo/).
 
 **Dependencies**
 1. `olympus_ros_msgs`. (Modified msgs from original package)
