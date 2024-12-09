@@ -23,4 +23,17 @@ cd mpc_ws/src
 git clone git@github.com:ntnu-arl/olympus_mpc_demo.git
 ```
 
-2. Follow the instructions of the `olympus_simulation` and `mpc_controller` to install these packages, and then build the rest of the repository. 
+2. Install the simulation: [olympus_simulation](olympus_simulation/README.md#setup)
+
+3. Install the controller: [mpc_controller](mpc_controller/README.md#installation-steps)
+
+
+## Run an example:
+
+In seperate terminals (after sourcing):
+
+```shell
+roslaunch olympus_drake_ros sim.launch
+roslaunch mpc_controller wbc.launch
+rosrun mpc_controller reference_pub.py # set up script to set reference
+```
