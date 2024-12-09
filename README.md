@@ -10,7 +10,8 @@ An overview of the paper can be found [here](https://michalispapadakis.github.io
 
 The main contents of this repository include:
 
-* A simulation environment in drake and ROS1, with a simplified model of the robot, to test the proposed attitude controller
+* A simulation environment in drake and ROS1, with a simplified model of the olympus robot, to test the proposed attitude controller.
+( The full model along with more details about the design and overall can be found in the  [Olympus design repo](https://github.com/ntnu-arl/Olympus-design).)
 * The code for the proposed controller
 
 
@@ -38,3 +39,29 @@ roslaunch mpc_controller wbc.launch       #run attitude controller
 roslaunch mpc_controller plot.launch      #view important plots for the MPC
 rosrun    mpc_controller reference_pub.py #publish attitude reference
 ```
+
+## References
+If you use this work in your research, please cite the following publications:
+
+**Modeling and In-flight Torso Attitude Stabilization of a Jumping Quadruped** [Link to paper](https://arxiv.org/abs/2409.14567)
+```bibtex
+@article{papadakis2024olympusmpc,
+  title={Modeling and In-flight Torso Attitude Stabilization of a Jumping Quadruped},
+  author={Papadakis, Michail and Olsen, Jørgen Anker and Poulakakis, Ioannis and Alexis, Kostas},
+  journal={arXiv preprint arXiv:2409.14567},
+  year={2024},
+  url={https://arxiv.org/abs/2409.14567}
+}
+```
+
+
+**Design and experimental verification of a jumping legged robot for martian lava tube exploration** [Link to paper](https://ieeexplore.ieee.org/abstract/document/10406863)
+```bibtex
+@inproceedings{olsen2023design,
+  title={Design and experimental verification of a jumping legged robot for martian lava tube exploration},
+  author={Olsen, J{\o}rgen Anker and Alexis, Kostas},
+  booktitle={2023 21st International Conference on Advanced Robotics (ICAR)},
+  pages={452--459},
+  year={2023},
+  organization={IEEE}
+}
