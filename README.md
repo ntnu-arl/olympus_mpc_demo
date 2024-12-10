@@ -65,3 +65,11 @@ If you use this work in your research, please cite the following publications:
   year={2023},
   organization={IEEE}
 }
+```
+
+## Contact 
+
+You can contact us for any questions:
+- [Michail Papadakis](mailto:michael.d.papadakis@gmail.com)
+- [Jørgen Anker Olsen](mailto:jorgen.a.olsen@ntnu.no)
+- [Kostas Alexis](mailto:konstantinos.alexis@ntnu.no)
